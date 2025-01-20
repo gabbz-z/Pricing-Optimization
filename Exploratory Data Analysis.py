@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load the cleaned dataset (update file path to your local file)
+# Loading the cleaned dataset 
 file_path_cleaned = '/Users/gabby/Desktop/Python and code/Pricing Opt/Cleaned_superstore.csv'
 df_user_cleaned = pd.read_csv(file_path_cleaned)
 
@@ -40,7 +40,6 @@ print("\nAverage Quantity Sold by Discount Level:")
 print(discount_analysis)
 
 # Step 4: Analyze Time-Based Trends
-# Convert Order.Date to datetime if not already done
 df_user_cleaned["Order.Date"] = pd.to_datetime(df_user_cleaned["Order.Date"], errors='coerce')
 
 # Aggregate sales by date
