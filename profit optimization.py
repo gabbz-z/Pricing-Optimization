@@ -8,8 +8,6 @@ from sklearn.metrics import mean_squared_error, r2_score
 # Load the dataset
 file_path_cleaned = '/Users/gabby/Desktop/Python and code/Pricing Opt/Cleaned_superstore.csv'
 df = pd.read_csv(file_path_cleaned)
-
-# Add a 'Cost' column if it doesn't exist
 if 'Cost' not in df.columns:
     df['Cost'] = df['Price'] * df['Quantity']
 
@@ -40,7 +38,7 @@ def calculate_profit(price_range, cost, discount, shipping_cost, model, base_fea
     for price in price_range:
         # Combine price with base features
         features = [price, cost, discount, shipping_cost] + base_features
-        features = np.array(features).reshape(1, -1)  # Ensure it's a 2D array for the model
+        features = np.array(features).reshape(1, -1)  
         
         # Predict quantity
         predicted_quantity = model.predict(features)[0]
@@ -64,7 +62,7 @@ base_features = []  # Additional base features, if any
 price_range = np.linspace(1, 50, 50)  # Example price range
 profits = calculate_profit(price_range, cost, discount, shipping_cost, model, base_features)
 
-# Find optimal price
+# Finding optimal price
 optimal_price = price_range[np.argmax(profits)]
 max_profit = max(profits)
 
